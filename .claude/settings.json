@@ -10,8 +10,7 @@
       "Skill(schedule)",
       "Skill(schedule:*)",
       "Read(//Users/minime/Library/LaunchAgents/**)",
-      "Bash(git add *)",
-      "Bash(git commit -m ' *)"
+      "Bash(/Users/minime/Projects/ai_apply/scripts/daily_run.sh)"
     ],
     "additionalDirectories": [
       "/Users/minime/Library/LaunchAgents"
