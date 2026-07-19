@@ -15,7 +15,8 @@
       "Bash(launchctl list *)",
       "Bash(/Users/minime/.local/bin/claude -p \"Reply with exactly: daily-run-smoke-test-ok\" --dangerously-skip-permissions --model claude-sonnet-5)",
       "Bash(python3 -c ' *)",
-      "Bash(/Users/minime/.local/bin/claude -p \"Reply with exactly: daily-run-smoke-test-ok-2\" --dangerously-skip-permissions --model claude-sonnet-5)"
+      "Bash(/Users/minime/.local/bin/claude -p \"Reply with exactly: daily-run-smoke-test-ok-2\" --dangerously-skip-permissions --model claude-sonnet-5)",
+      "Bash(git rev-list *)"
     ],
     "additionalDirectories": [
       "/Users/minime/Library/LaunchAgents"
