@@ -1,8 +1,11 @@
 #!/bin/zsh
 # Unattended morning run of /daily. Invoked by launchd (see
 # ~/Library/LaunchAgents/com.aiapply.dailyscrape.plist) — no one is
-# available to answer permission prompts, so this runs with prompts
-# skipped, scoped to this repo directory only.
+# available to answer permission prompts, so everything /daily needs
+# (WebSearch, WebFetch, and the exact docx-render Bash command) is
+# pre-approved in .claude/settings.json. Anything not on that allow-list
+# is denied automatically rather than hanging on a prompt nobody can
+# answer — deliberately NOT running with --dangerously-skip-permissions.
 
 set -uo pipefail
 
@@ -17,7 +20,6 @@ cd "$REPO_DIR" || exit 1
 {
   echo "=== /daily run started $(date) ==="
   "$CLAUDE_BIN" -p "/daily" \
-    --dangerously-skip-permissions \
     --model claude-sonnet-5
   echo "=== /daily run finished $(date) with exit code $? ==="
 } >> "$LOG_FILE" 2>&1

@@ -160,6 +160,24 @@ experience:
       - Coordinated test execution, defect management, and cross-functional delivery activities.
       - Supported integration and system validation across enterprise platforms.
 
+portfolio:
+  - name: ui_api_bank
+    url: https://github.com/smilyutin/ui_api_bank
+    description: >
+      Deliberately vulnerable banking web app built as a sandbox for security
+      testing practice. Playwright UI + API test suites covering the OWASP
+      API Top 10 (SQL injection, broken auth/authz, XSS, CSRF) plus AI/LLM
+      attack scenarios against a built-in AI chat agent. Page Object Model
+      architecture, Python/Flask backend, TypeScript, Docker Compose, Allure
+      reporting.
+  - name: AIPerformance
+    url: https://github.com/smilyutin/AIPerformance
+    description: >
+      Testing framework for validating LLM-generated security advice.
+      DeepEval + pytest suite measuring answer relevancy, faithfulness, and
+      hallucination detection, plus RAG evaluation and prompt-regression
+      testing against OpenAI GPT-4o-mini, with GitHub Actions CI.
+
 tools_and_technologies:
   Testing: [Playwright, Selenium WebDriver, Postman, REST Assured, ReadyAPI, SoapUI, TestRail]
   Development & CI/CD: [TypeScript, Java, GitHub Actions, Jenkins, Azure DevOps]

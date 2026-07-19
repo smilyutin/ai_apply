@@ -156,7 +156,7 @@ tools_and_technologies:
   Testing: [Selenium WebDriver, Postman, Playwright, REST Assured, ReadyAPI, SoapUI, TestRail]
   Development & CI/CD: [TypeScript, Java, GitHub Actions, Jenkins, Azure DevOps]
   Platforms: [Web Applications, Mobile Applications, SaaS, APIs, Enterprise Systems]
-  Databases: [SQL, Data Validation]
+  Databases: [SQL, MongoDB, Data Validation]
   Collaboration: [Jira, Confluence, SharePoint, Microsoft Teams, Azure DevOps]
 
 education:
