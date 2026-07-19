@@ -9,7 +9,7 @@
       "Bash(.venv/bin/python scripts/generate_docx.py *)",
       "Skill(schedule)",
       "Skill(schedule:*)",
-      "Read(//Users/minime/Library/LaunchAgents/**)",
+      "Read(/Users/minime/Library/LaunchAgents/**)",
       "Bash(/Users/minime/Projects/ai_apply/scripts/daily_run.sh)"
     ],
     "additionalDirectories": [
