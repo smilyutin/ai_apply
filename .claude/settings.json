@@ -4,14 +4,8 @@
       "WebSearch",
       "WebFetch",
       "Bash(.venv/bin/python -c \"import docx, yaml; print\\('ok'\\)\")",
-      "Bash(.venv/bin/python scripts/generate_docx.py *)",
-      "Skill(schedule)",
-      "Skill(schedule:*)",
-      "Read(//Users/minime/Library/LaunchAgents/**)",
-      "Bash(gh repo *)"
-    ],
-    "additionalDirectories": [
-      "/Users/minime/Library/LaunchAgents"
+      "Bash(.venv/bin/python scripts/generate_docx.py resume applications/**/resume.yaml applications/**/resume.docx)",
+      "Bash(.venv/bin/python scripts/generate_docx.py cover-letter applications/**/cover_letter.yaml applications/**/cover_letter.docx)"
     ]
   }
 }
