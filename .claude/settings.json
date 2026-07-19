@@ -11,7 +11,7 @@
       "Skill(schedule)",
       "Skill(schedule:*)",
       "Read(/Users/minime/Library/LaunchAgents/**)",
-      "Bash(/Users/minime/Projects/ai_apply/scripts/daily_run.sh)",
+      "Bash(scripts/daily_run.sh)",
       "Bash(gh repo *)"
     ],
     "additionalDirectories": [
