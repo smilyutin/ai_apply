@@ -62,9 +62,12 @@ profile/profile.yaml, preferences.yaml, cover_letter_voice.md
 
 ```
 /scrape
-   │  read preferences.yaml → search portals → rate fit (High/Medium/Low)
+   │  read preferences.yaml → search portals → dedupe candidates
+   │  validate each company is legit (drop suspected scams — see below)
+   │  rate the rest High / Medium / Low
    ▼
-applications/scrape_<date>.md   (table of candidates + URLs)
+applications/scrape_<date>.md
+   (fit tables + a separate "Excluded — suspected scam" table)
    │  user picks a URL
    ▼
 /apply <url>
@@ -76,6 +79,15 @@ applications/scrape_<date>.md   (table of candidates + URLs)
 applications/<slug>/   (ready to review and submit manually)
 ```
 
+**Scam screening** (`/scrape` step 5): before rating fit, each remaining
+candidate is checked for recruiter-scam red flags — no findable company
+presence, requests for payment/deposits or bank/SIN/ID details before an
+interview, contact only via personal email or messaging apps, comp that's
+implausibly high with no other detail, templated copy-paste listings, or
+an unverifiable staffing shop. Any hard signal (or several weak ones)
+excludes the posting outright — it's never rated or drafted, and is logged
+under "Excluded — suspected scam" instead of silently dropped.
+
 ### Automated morning run
 
 ```
@@ -83,17 +95,19 @@ launchd (8:00 AM daily)
    │
    ▼
 scripts/daily_run.sh
-   │  cd repo; claude -p "/daily" --dangerously-skip-permissions
+   │  cd repo; claude -p "/daily"   (no bypass flag — see Permissions note)
    ▼
 /daily
    │  1. collect every URL already in scrape_*.md and */job_posting.md
-   │  2. search (same as /scrape), keep only URLs not seen before
+   │  2. search + validate + rate (same as /scrape), keep only URLs not
+   │     seen before; scam-flagged postings are dropped here too
    │  3. write today's applications/scrape_<date>.md
    │  4. for each NEW High/Medium fit posting: run the /apply flow in full
-   │     (Low fit is listed, not drafted)
+   │     (Low fit and scam-excluded postings are listed, never drafted)
    ▼
 applications/report_<date>.md
-   (Title | Company | Fit | URL | resume.docx path | cover_letter.docx path)
+   (Ready to apply / Found but not drafted / Excluded — suspected scam,
+    each with Title | Company | Fit | URL | Resume path | Cover Letter path)
    │
    ▼
 user reads the report, opens the docx files, applies manually
@@ -104,8 +118,19 @@ documents. Applying is always a manual, human step.
 
 ## Permissions note
 
-`/scrape` and `/apply` run interactively under the normal permission
-prompts (`.claude/settings.json` allow-lists common WebFetch domains). The
-scheduled `/daily` run is unattended, so `scripts/daily_run.sh` invokes
-Claude Code with `--dangerously-skip-permissions`, scoped to this repo
-directory only.
+`/scrape` and `/apply` run interactively under normal permission prompts.
+The scheduled `/daily` run is unattended (no one is around at 8am to
+approve a prompt), so instead of skipping permissions entirely,
+`.claude/settings.json` pre-approves exactly what `/daily` needs and
+nothing else:
+
+- `WebSearch` and `WebFetch` (any domain — job postings and company sites
+  vary daily, so this can't be a fixed domain list)
+- `Bash` restricted to two exact command patterns: the venv sanity check
+  and `generate_docx.py` — no general shell access
+
+Anything not on that list is denied automatically rather than hanging on a
+prompt nobody can answer. `scripts/daily_run.sh` deliberately does **not**
+pass `--dangerously-skip-permissions` — even if something in `/daily`
+misbehaved, it has no way to touch anything outside this repo or run an
+arbitrary command.

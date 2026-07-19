@@ -47,8 +47,35 @@ ranks candidates.
    from the title/location alone (e.g. rejected locations) — don't waste fetches
    on those.
 
-5. Rate each remaining candidate's fit as High / Medium / Low against
-   `preferences.yaml`:
+5. Validate that the company is legit before rating fit. For each candidate
+   remaining after step 4, check for scam/fraudulent-recruiter signals:
+   - No findable presence beyond the job listing itself — WebSearch the
+     company name; if there's no real company website and no LinkedIn
+     company page (or one with essentially no history/employees), that's a
+     red flag, not proof on its own, but weigh it with the others below.
+   - The posting or any contact info asks for payment, a deposit, or
+     purchase of "starter kit" equipment/software at any stage.
+   - It asks for bank details, SIN/SSN, or ID/passport scans before any
+     interview has happened.
+   - Contact is routed only through a personal email address (gmail/yahoo/
+     outlook, not the company's own domain) or a messaging app (WhatsApp/
+     Telegram/Signal) instead of a normal application process.
+   - Compensation is dramatically above market for the stated role/location
+     with no other specific detail about the job.
+   - The listing reads as a generic template with the company name swapped
+     in and no company- or role-specific detail anywhere.
+   - A staffing/recruiting firm that itself can't be verified — no
+     discoverable business presence, reviews, or registration.
+   One or two weak signals alone (e.g. thin LinkedIn presence for a small
+   real company) aren't disqualifying — use judgment. Multiple signals, or
+   any hard one (payment/deposit request, bank/SIN details, ID scans before
+   an interview), means exclude the posting entirely regardless of fit —
+   don't rate it, don't list it in the fit tables. Record it instead under
+   "Excluded — suspected scam" (see step 7) with the specific signal(s)
+   found, so the exclusion is auditable rather than silent.
+
+6. Rate each remaining (validated) candidate's fit as High / Medium / Low
+   against `preferences.yaml`:
    - Reject outright (don't list) anything hitting a `deal_breaker` or a
      `rejected` location.
    - For "Remote - US" postings, per `work_authorization`: only treat as a
@@ -60,17 +87,20 @@ ranks candidates.
    - Low: borderline on a `must_have` or seniority mismatch, but not a
      deal-breaker — include for completeness but flag why.
 
-6. Present results as a markdown table, sorted High → Medium → Low, columns:
+7. Present results as a markdown table, sorted High → Medium → Low, columns:
    Title | Company | Location | Portal | Fit | Why | URL. Keep the "Why"
-   column to one short clause.
+   column to one short clause. Follow it with an "Excluded — suspected scam"
+   table (if any) — same columns plus "Red flag(s)" instead of "Fit", so
+   the user can see what was screened out and why without it cluttering the
+   fit tables.
 
-7. Write the same table to
+8. Write the same tables to
    `applications/scrape_<YYYY-MM-DD>.md` (create `applications/` if needed)
    so the list persists after the conversation ends. If a scrape file for
    today already exists, append new candidates rather than overwriting, and
    skip re-listing ones already recorded (match on URL).
 
-8. Close with a one-line pointer: tell the user to run `/apply <url>` on
+9. Close with a one-line pointer: tell the user to run `/apply <url>` on
    whichever posting they want to pursue.
 
 Do not fabricate postings or details. If a search returns nothing usable for

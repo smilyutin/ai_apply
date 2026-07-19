@@ -35,15 +35,19 @@ known URL) is already seen — drop it before rating, and don't recreate an
 
 Follow `.claude/commands/scrape.md` steps 1-6 exactly (read
 `profile/preferences.yaml`, build queries, WebSearch, dedupe candidates,
-WebFetch where needed for fit detail, rate High/Medium/Low) — but restrict
+WebFetch where needed for fit detail, validate company legitimacy and drop
+any suspected-scam postings, rate the rest High/Medium/Low) — but restrict
 the result set to postings NOT in the "already seen" set from Step 1.
+Suspected-scam postings are excluded here just as `/scrape` excludes them —
+never draft for one even if it would otherwise look High/Medium fit.
 
 ## Step 3 — Record today's scrape
 
 Write/append `applications/scrape_<YYYY-MM-DD>.md` exactly as `/scrape`
-step 7 describes, containing only today's newly-found candidates (High,
-Medium, and Low). This keeps tomorrow's "already seen" set accurate even
-for postings that don't get drafted.
+steps 7-8 describe (fit tables plus the "Excluded — suspected scam" table),
+containing only today's newly-found candidates (High, Medium, Low, and
+scam-excluded). This keeps tomorrow's "already seen" set accurate even for
+postings that don't get drafted.
 
 ## Step 4 — Auto-draft for High and Medium fit
 
@@ -86,12 +90,19 @@ reads each morning:
 | Title | Company | Fit | URL | Why |
 |---|---|---|---|---|
 | ... | ... | Low | <url> | <reason> |
+
+## Excluded — suspected scam
+
+| Title | Company | URL | Red flag(s) |
+|---|---|---|---|
+| ... | ... | <url> | <signal(s) from scrape.md step 5> |
 ```
 
-Sort the "Ready to apply" table High before Medium. Use paths relative to
-the repo root so they're clickable/openable directly. If nothing new was
-found, still write the file with "0 new postings found today" so the run's
-history is visible.
+Omit the "Excluded — suspected scam" section entirely if nothing was
+flagged today. Sort the "Ready to apply" table High before Medium. Use
+paths relative to the repo root so they're clickable/openable directly. If
+nothing new was found, still write the file with "0 new postings found
+today" so the run's history is visible.
 
 ## Step 6 — Close
 
