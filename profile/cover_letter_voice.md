@@ -16,7 +16,7 @@ Notes extracted from a past cover letter Sergey was happy with (AbaData applicat
 4. **Personal working style** — analytical mindset, attention to detail, clear
    communication, reproducible defect reports, enjoys learning new tech. If the
    posting emphasizes automation, API/security testing, or AI-assisted QA, this
-   is the spot to mention ONE relevant project from `profile.yaml`'s
+   is the spot to mention ONE relevant project from `profile/profile.yaml`'s
    `portfolio` list with its URL — one short clause tying it to what the
    posting asks for, not a project description dump. Only include it when it
    genuinely strengthens the fit; skip it for postings where it wouldn't land
