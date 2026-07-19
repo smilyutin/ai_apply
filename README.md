@@ -128,5 +128,6 @@ approve a prompt), so instead of skipping permissions entirely,
 - `Bash` restricted to: the venv sanity check and the `generate_docx.py` resume/cover-letter render commands
 - `Bash(scripts/daily_run.sh)` (launchd entrypoint)
 - `Skill(schedule)` plus read-only access to `~/Library/LaunchAgents` (used to manage the launchd agent)
+- `Bash(gh repo *)` for git operations
 
 Anything not on that allow-list is denied automatically rather than hanging on a prompt nobody can answer. `scripts/daily_run.sh` deliberately does **not** pass `--dangerously-skip-permissions` — even if something in `/daily` misbehaved, it would still be constrained to the explicitly allowed tools/paths (no general shell access; writes limited to `applications/**`).

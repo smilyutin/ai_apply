@@ -5,11 +5,14 @@
       "WebFetch",
       "Write(applications/**)",
       "Edit(applications/**)",
+      "Bash(.venv/bin/python -c \"import docx, yaml; print\\('ok'\\)\")",
       "Bash(.venv/bin/python scripts/generate_docx.py resume applications/*/resume.yaml applications/*/resume.docx)",
       "Bash(.venv/bin/python scripts/generate_docx.py cover-letter applications/*/cover_letter.yaml applications/*/cover_letter.docx)",
+      "Skill(schedule)",
       "Skill(schedule:*)",
       "Read(/Users/minime/Library/LaunchAgents/**)",
-      "Bash(/Users/minime/Projects/ai_apply/scripts/daily_run.sh)"
+      "Bash(/Users/minime/Projects/ai_apply/scripts/daily_run.sh)",
+      "Bash(gh repo *)"
     ],
     "additionalDirectories": [
       "/Users/minime/Library/LaunchAgents"
