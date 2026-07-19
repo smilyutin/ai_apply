@@ -1,0 +1,174 @@
+# Source of truth for all resume content.
+# /apply reads this file and selects/reorders/rewords bullets to fit each job posting.
+# Never invent experience that isn't grounded here — tailoring means emphasis and
+# phrasing, not fabrication.
+
+contact:
+  name: Sergey Milyutin
+  location: Vancouver, BC
+  phone: 604-329-1969
+  email: smilyutin1@gmail.com
+  linkedin: linkedin.com/in/skale-qa
+
+headline: "QA Engineer | Quality Assurance Analyst | Mobile & Web Application Testing | API & Integration Testing | Test Automation | Agile Delivery"
+
+summary: |
+  Senior QA Engineer and Quality Assurance Lead with 15+ years of experience delivering
+  high-quality software solutions across mobile applications, web applications, backend
+  systems, APIs, SaaS platforms, fintech, cybersecurity, telecommunications, and enterprise
+  environments.
+
+  Experienced in the complete software testing lifecycle including requirements analysis,
+  test planning, functional testing, exploratory testing, regression testing, integration
+  testing, API validation, defect management, release verification, and production
+  readiness activities.
+
+  Strong systems-thinking approach with the ability to analyze complex user workflows,
+  client-server communication, authentication, integrations, data flows, and business
+  processes. Experienced working in Agile/Scrum environments with cross-functional
+  product, engineering, and business teams.
+
+  Passionate about modern quality engineering practices, including Playwright automation,
+  API automation, CI/CD integration, AI-assisted testing, and improving QA processes
+  through automation and continuous improvement.
+
+core_competencies:
+  - category: Quality Assurance & Testing
+    items:
+      - Mobile Application Testing (iOS / Android)
+      - Web Application Testing
+      - Backend & API Testing
+      - Functional Testing
+      - Exploratory Testing
+      - Regression Testing
+      - Integration Testing
+      - Smoke & Sanity Testing
+      - User Acceptance Testing (UAT)
+      - Release Validation & Production Verification
+      - Defect Management & Root Cause Analysis
+  - category: API & System Integration Testing
+    items:
+      - REST API Testing
+      - HTTP Protocols & Request/Response Validation
+      - Client-Server Communication Testing
+      - Authentication & Authorization Testing
+      - Data Synchronization Validation
+      - Third-Party System Integrations
+      - SQL Data Validation
+  - category: Automation & AI-Driven QA
+    items:
+      - Playwright with TypeScript
+      - Selenium WebDriver
+      - Test Automation Framework Development
+      - Automated Regression Testing
+      - CI/CD Test Integration
+      - AI-Assisted Test Case Generation
+      - LLM-Based Testing & Evaluation
+      - Automation Opportunity Identification
+  - category: Agile & Product Delivery
+    items:
+      - Scrum / Kanban Methodologies
+      - Feature Lifecycle Testing
+      - Requirements Review
+      - User Stories & Acceptance Criteria
+      - Test Strategy & Test Planning
+      - Risk-Based Testing
+      - Cross-functional Collaboration
+      - Async Remote Team Communication
+  - category: QA Tools
+    items:
+      - Jira
+      - Azure DevOps Boards & Test Plans
+      - Confluence
+      - TestRail
+      - Postman
+      - REST Assured
+      - ReadyAPI / SoapUI
+      - Charles Proxy / Network Debugging Tools
+      - GitHub Actions
+      - Jenkins
+
+professional_strengths:
+  - name: Systems Thinking
+    detail: Analyze complete product workflows by understanding frontend behavior, backend services, APIs, integrations, authentication, data flows, and user journeys.
+  - name: Mobile & Web Quality Focus
+    detail: Experienced validating user-facing applications, backend functionality, integrations, and business-critical workflows across multiple platforms.
+  - name: Strong Exploratory Testing Skills
+    detail: Identify edge cases, usability issues, unexpected behaviors, and integration problems beyond standard test scenarios.
+  - name: Release Ownership
+    detail: Comfortable providing quality assessments, identifying risks, communicating testing status, and supporting go/no-go release decisions.
+  - name: Technical Defect Analysis
+    detail: Skilled in creating detailed defect reports with reproduction steps, logs, technical analysis, and business impact.
+  - name: Automation Mindset
+    detail: Continuously identify repetitive testing activities that can be automated and improve regression efficiency through modern automation frameworks.
+  - name: AI-Enhanced QA Practices
+    detail: Experience applying AI tools and LLM-based approaches to improve test design, automation development, and software quality analysis.
+  - name: Collaborative Communication
+    detail: Effective working with developers, product managers, business users, vendors, and distributed international teams.
+
+experience:
+  - title: Senior QA Lead
+    company: MCFD Transformation Program
+    dates: "2024 - 2025"
+    bullets:
+      - Led end-to-end quality assurance activities for a large-scale enterprise transformation initiative.
+      - Reviewed requirements, user stories, acceptance criteria, and functional specifications to identify test risks early.
+      - Designed test strategies, test scenarios, regression suites, and traceability documentation.
+      - Coordinated functional, integration, regression, and user acceptance testing activities.
+      - Validated workflows, integrations, data exchanges, and business processes before production deployment.
+      - Managed defect lifecycle including investigation, prioritization, technical analysis, and stakeholder communication.
+      - Supported release readiness decisions through quality reporting and risk assessment.
+      - Collaborated with business stakeholders, developers, and technical teams in Agile delivery processes.
+
+  - title: QA Automation Lead
+    company: BCLC
+    dates: "2023 - 2024"
+    bullets:
+      - Developed and maintained automated testing solutions for enterprise applications and integrations.
+      - Created reusable automation components using modern testing frameworks.
+      - Executed functional, regression, API, and integration testing across complex workflows.
+      - Validated system behavior, data flows, and business rules.
+      - Integrated automated testing into CI/CD workflows to improve release confidence.
+      - Supported UAT coordination, defect triage, and production readiness activities.
+
+  - title: QA Engineer
+    company: Imperva
+    dates: "2021 - 2022"
+    bullets:
+      - Tested cybersecurity SaaS applications including web interfaces, APIs, and enterprise workflows.
+      - Performed functional, integration, regression, and API testing.
+      - Validated authentication flows, system integrations, and backend functionality.
+      - Analyzed defects, logs, and application behavior to support engineering resolution.
+      - Collaborated with distributed Agile teams to deliver reliable software releases.
+
+  - title: Senior QA Analyst
+    company: Western Union Business Solutions
+    dates: "2007 - 2020"
+    bullets:
+      - Tested global payment platforms, financial applications, workflow systems, and enterprise integrations.
+      - Performed functional, regression, integration, API, and data validation testing.
+      - Validated payment processing workflows, business rules, ETL processes, and database integrity using SQL.
+      - Tested third-party integrations and backend services supporting critical financial operations.
+      - Created and maintained test cases, regression suites, defect documentation, and release validation materials.
+      - Collaborated with global business users, developers, and operations teams to improve software quality.
+
+  - title: QA Test Lead
+    company: SITA.AERO
+    dates: "2005 - 2007"
+    bullets:
+      - Led QA activities for airline enterprise applications.
+      - Coordinated test execution, defect management, and cross-functional delivery activities.
+      - Supported integration and system validation across enterprise platforms.
+
+tools_and_technologies:
+  Testing: [Playwright, Selenium WebDriver, Postman, REST Assured, ReadyAPI, SoapUI, TestRail]
+  Development & CI/CD: [TypeScript, Java, GitHub Actions, Jenkins, Azure DevOps]
+  Platforms: [Web Applications, Mobile Applications, SaaS, APIs, Enterprise Systems]
+  Databases: [SQL, Data Validation]
+  Collaboration: [Jira, Confluence, SharePoint, Microsoft Teams, Azure DevOps]
+
+education:
+  - degree: Programmer Analyst Diploma
+    school: CDI College
+  - degree: M.Sc. Mechanical Engineering
+    school: Odessa Maritime Institute of Ministry of Maritime Fleet

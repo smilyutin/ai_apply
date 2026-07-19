@@ -1,0 +1,77 @@
+---
+description: Search job portals for postings that match profile/preferences.yaml and present fit-rated matches
+---
+
+# /scrape
+
+Goal: find live job postings that match `profile/preferences.yaml`, rate each
+one's fit, and hand back a short list the user can pick from to run
+`/apply <url>` next. This command does not draft anything — it only finds and
+ranks candidates.
+
+## Steps
+
+1. Read `profile/preferences.yaml`. Note `target_roles`, `locations`,
+   `work_authorization`, `must_haves`, `nice_to_haves`, `deal_breakers`, and
+   `portals`.
+
+2. Build search queries by combining target roles with the accepted
+   locations, scoped to each portal's domain via `site:` search operators,
+   e.g.:
+   - `site:linkedin.com/jobs QA Engineer Vancouver`
+   - `site:ca.indeed.com Junior QA Analyst Remote Canada`
+   - `site:glassdoor.ca "QA Team Lead" Vancouver`
+   - `site:linkedin.com/jobs Manual QA Tester Vancouver`
+   - `site:ca.indeed.com QA Automation Engineer Remote Canada`
+
+   `target_roles` in preferences.yaml spans the full seniority range (Junior
+   through Lead) and both manual and automation QA — cast a wide net across
+   that whole range rather than narrowing to a couple of titles. Don't
+   restrict searches to "Senior" just because that's the candidate's actual
+   level; a posting titled "Intermediate QA Analyst" or "QA Tester" is
+   still in scope. Group queries efficiently (e.g. one query can omit a level
+   qualifier and let results span levels) rather than running every
+   role-level x location x portal permutation — aim for broad coverage in
+   roughly 10-15 queries, not one query per exact title variant. Skip
+   `Company career pages` (no URL to search against) unless the user names
+   specific companies.
+
+3. Use WebSearch for each query. Collect candidate postings: title, company,
+   location, portal, URL. Deduplicate by company + title (job boards often
+   cross-post the same role, and search engines may return the same listing
+   multiple times).
+
+4. For candidates where the search snippet doesn't give enough to judge fit
+   (seniority, remote policy, core responsibilities), WebFetch the posting URL
+   to pull more detail. Skip this for postings that are obviously out of scope
+   from the title/location alone (e.g. rejected locations) — don't waste fetches
+   on those.
+
+5. Rate each remaining candidate's fit as High / Medium / Low against
+   `preferences.yaml`:
+   - Reject outright (don't list) anything hitting a `deal_breaker` or a
+     `rejected` location.
+   - For "Remote - US" postings, per `work_authorization`: only treat as a
+     match if the posting explicitly allows working from Canada; otherwise
+     mark fit as "confirm eligibility" instead of a hard reject.
+   - High: hits all `must_haves` and several `nice_to_haves`, right seniority.
+   - Medium: hits `must_haves` but few/no `nice_to_haves`, or seniority is a
+     stretch in either direction.
+   - Low: borderline on a `must_have` or seniority mismatch, but not a
+     deal-breaker — include for completeness but flag why.
+
+6. Present results as a markdown table, sorted High → Medium → Low, columns:
+   Title | Company | Location | Portal | Fit | Why | URL. Keep the "Why"
+   column to one short clause.
+
+7. Write the same table to
+   `applications/scrape_<YYYY-MM-DD>.md` (create `applications/` if needed)
+   so the list persists after the conversation ends. If a scrape file for
+   today already exists, append new candidates rather than overwriting, and
+   skip re-listing ones already recorded (match on URL).
+
+8. Close with a one-line pointer: tell the user to run `/apply <url>` on
+   whichever posting they want to pursue.
+
+Do not fabricate postings or details. If a search returns nothing usable for
+a query, say so rather than inventing a plausible-looking listing.

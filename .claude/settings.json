@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(.venv/bin/python -c \"import docx, yaml; print\\('ok'\\)\")",
+      "WebSearch",
+      "WebFetch(domain:ca.indeed.com)",
+      "WebFetch(domain:ca.linkedin.com)",
+      "WebFetch(domain:www.glassdoor.ca)",
+      "Skill(schedule)",
+      "Skill(schedule:*)",
+      "Bash(cat /Users/minime/Projects/ai_apply/.gitignore 2>/dev/null; echo \"---venv check---\"; ls /Users/minime/Projects/ai_apply/.venv/bin | grep -i python; echo \"---launchagents dir---\"; ls ~/Library/LaunchAgents 2>/dev/null)",
+      "Read(//Users/minime/Library/LaunchAgents/**)",
+      "Bash(chmod +x /Users/minime/Projects/ai_apply/scripts/daily_run.sh)",
+      "Bash(launchctl load *)",
+      "Bash(launchctl list *)",
+      "Bash(/Users/minime/.local/bin/claude -p \"Reply with exactly: daily-run-smoke-test-ok\" --dangerously-skip-permissions --model claude-sonnet-5)",
+      "Bash(python3 -c ' *)",
+      "Bash(/Users/minime/.local/bin/claude -p \"Reply with exactly: daily-run-smoke-test-ok-2\" --dangerously-skip-permissions --model claude-sonnet-5)"
+    ],
+    "additionalDirectories": [
+      "/Users/minime/Library/LaunchAgents"
+    ]
+  }
+}

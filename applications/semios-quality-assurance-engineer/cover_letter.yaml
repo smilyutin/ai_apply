@@ -1,0 +1,50 @@
+contact:
+  name: Sergey Milyutin
+  location: Vancouver, BC
+  phone: 604-329-1969
+  email: smilyutin1@gmail.com
+  linkedin: linkedin.com/in/skale-qa
+
+date: "July 18, 2026"
+
+recipient: |
+  Hiring Manager
+  Semios
+
+salutation: "Dear Hiring Manager,"
+
+body_paragraphs:
+  - >
+    I'm writing to apply for the Quality Assurance Engineer role at Semios.
+    I've spent 15+ years in software quality assurance, and I'm drawn to
+    testing systems that growers actually rely on to manage crops, water,
+    and farm operations across real acreage, rather than an abstract
+    dashboard.
+  - >
+    My background covers the full testing lifecycle: writing test plans and
+    cases, executing functional, exploratory, regression, and integration
+    testing, and filing clear, reproducible defect reports in Jira. I've
+    worked closely with product, development, and support teams across
+    payments, cybersecurity, and public-sector systems to confirm
+    requirements before release and keep regression suites current. While
+    I've led QA strategy at the program level, I'm equally happy hands-on in
+    the day-to-day testing work, and that's exactly the kind of role I'm
+    looking for next.
+  - >
+    What stands out about Semios is the scale of what your platform
+    actually touches: over 200 million acres across five countries,
+    spanning crop protection, water management, farm automation, and
+    management tools like Agworld and Altrac. I like QA work where a missed
+    edge case has a tangible real-world consequence, and agricultural
+    technology is exactly that kind of high-stakes, data-heavy environment.
+  - >
+    I'm an analytical, detail-oriented tester who enjoys digging into edge
+    cases and unexpected behavior beyond the standard test script, and I
+    communicate testing status and risk clearly to both technical and
+    non-technical stakeholders. I've also been applying AI-assisted and
+    LLM-based approaches to speed up test case generation and reduce manual
+    regression effort, and I'd welcome bringing that same approach to your
+    team's testing strategy.
+  - >
+    Thank you for considering my application. I'd welcome the chance to
+    discuss how my testing background could support Semios's QA process.
