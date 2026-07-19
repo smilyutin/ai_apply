@@ -3,12 +3,15 @@
     "allow": [
       "WebSearch",
       "WebFetch",
+      "Write(applications/**)",
+      "Edit(applications/**)",
       "Bash(.venv/bin/python -c \"import docx, yaml; print\\('ok'\\)\")",
       "Bash(.venv/bin/python scripts/generate_docx.py *)",
       "Skill(schedule)",
       "Skill(schedule:*)",
       "Read(//Users/minime/Library/LaunchAgents/**)",
-      "Bash(gh repo *)"
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)"
     ],
     "additionalDirectories": [
       "/Users/minime/Library/LaunchAgents"
