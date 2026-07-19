@@ -126,8 +126,9 @@ nothing else:
 
 - `WebSearch` and `WebFetch` (any domain — job postings and company sites
   vary daily, so this can't be a fixed domain list)
-- `Bash` restricted to two exact command patterns: the venv sanity check
-  and `generate_docx.py` — no general shell access
+- `Bash` restricted to three exact command patterns: the venv sanity
+  check plus two `generate_docx.py` invocations that only write
+  `applications/**/{resume,cover_letter}.docx` — no general shell access
 
 Anything not on that list is denied automatically rather than hanging on a
 prompt nobody can answer. `scripts/daily_run.sh` deliberately does **not**
