@@ -1,10 +1,10 @@
 #!/bin/zsh
 # Unattended morning run of /daily. Invoked by launchd (see
 # ~/Library/LaunchAgents/com.aiapply.dailyscrape.plist) — no one is
-# available to answer permission prompts, so everything /daily needs
-# (WebSearch, WebFetch, one venv sanity-check Bash command, and two
-# tightly-scoped docx-render Bash commands for applications/** output) is
-# pre-approved in .claude/settings.json. Anything not on that allow-list is
+# available to answer permission prompts, so .claude/settings.json pre-approves the
+# unattended /daily allow-list (WebSearch/WebFetch, Write/Edit under
+# applications/**, the exact docx-render Bash commands, plus the scheduler
+# management entries documented in README.md). Anything not on that allow-list is
 # denied automatically rather than hanging on a prompt nobody can answer —
 # deliberately NOT running with --dangerously-skip-permissions.
 

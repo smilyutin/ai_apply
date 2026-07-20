@@ -16,7 +16,7 @@ ai_apply/
 │   │   └── application-reviewer.md    # reviews a drafted resume/cover letter before finalizing
 │   └── commands/
 │       ├── setup.md                   # /setup  — interview the user, write profile/*
-│       ├── scrape.md                  # /scrape — search portals, rate fit, list candidates
+│       ├── scrape.md                  # /scrape — search LinkedIn, rate fit, list candidates
 │       ├── apply.md                   # /apply  — draft resume + cover letter for one posting URL
 │       └── daily.md                   # /daily  — unattended: new postings only, auto-draft High/Medium
 ├── profile/
@@ -26,7 +26,7 @@ ai_apply/
 ├── applications/
 │   ├── _example/
 │   │   └── cover_letter.yaml          # schema reference
-│   ├── scrape_<YYYY-MM-DD>.md         # daily search results (all fit levels, one file per day)
+│   ├── scrape_<YYYY-MM-DD>.md         # daily LinkedIn search results (all fit levels, one file per day)
 │   ├── report_<YYYY-MM-DD>.md         # /daily's morning report (new postings + drafted docs)
 │   └── <company-title-slug>/          # one folder per posting that got drafted
 │       ├── job_posting.md             # extracted posting details + source URL
@@ -58,7 +58,7 @@ profile/profile.yaml, preferences.yaml, cover_letter_voice.md
 (source of truth for every later step)
 ```
 
-### Manual search → apply
+### Collect first, then apply
 
 ```
 /scrape
@@ -71,10 +71,10 @@ applications/scrape_<date>.md
    │  user picks a URL
    ▼
 /apply <url>
-   │  fetch posting → fit_evaluation.md
+   │  read collected job_posting.md or fetch if needed
+   │  write fit_evaluation.md
    │  draft resume.yaml + cover_letter.yaml from profile.yaml
-   │  application-reviewer subagent → revise
-   │  generate_docx.py → resume.docx + cover_letter.docx
+   │  generate_docx.py → SMilyutin_resume.docx + SMilyutin_cover_letter.docx
    ▼
 applications/<slug>/   (ready to review and submit manually)
 ```
@@ -114,7 +114,8 @@ user reads the report, opens the docx files, applies manually
 ```
 
 `/daily` never submits an application — it only finds postings and prepares
-documents. Applying is always a manual, human step.
+documents for the companies it drafts. Collecting is always separate from the
+later fit-evaluation/doc-generation step for chosen companies.
 
 ## Permissions note
 

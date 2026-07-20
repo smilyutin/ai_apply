@@ -12,7 +12,7 @@ contact:
 
 headline: "QA Engineer | Quality Assurance Analyst | Mobile & Web Application Testing | API & Integration Testing | Test Automation | Agile Delivery"
 
-summary: |
+summary: >
   Senior QA Engineer and Quality Assurance Lead with 15+ years of experience delivering
   high-quality software solutions across mobile applications, web applications, backend
   systems, APIs, SaaS platforms, fintech, cybersecurity, telecommunications, and enterprise
@@ -179,9 +179,19 @@ portfolio:
       testing against OpenAI GPT-4o-mini, with GitHub Actions CI.
 
 tools_and_technologies:
-  Testing: [Playwright, Selenium WebDriver, Postman, REST Assured, ReadyAPI, SoapUI, TestRail]
+  Testing:
+    [
+      Playwright,
+      Selenium WebDriver,
+      Postman,
+      REST Assured,
+      ReadyAPI,
+      SoapUI,
+      TestRail,
+    ]
   Development & CI/CD: [TypeScript, Java, GitHub Actions, Jenkins, Azure DevOps]
-  Platforms: [Web Applications, Mobile Applications, SaaS, APIs, Enterprise Systems]
+  Platforms:
+    [Web Applications, Mobile Applications, SaaS, APIs, Enterprise Systems]
   Databases: [SQL, Data Validation]
   Collaboration: [Jira, Confluence, SharePoint, Microsoft Teams, Azure DevOps]
 

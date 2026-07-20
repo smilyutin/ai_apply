@@ -34,10 +34,11 @@ known URL) is already seen — drop it before rating, and don't recreate an
 ## Step 2 — Search
 
 Follow `.claude/commands/scrape.md` steps 1-6 exactly (read
-`profile/preferences.yaml`, build queries, WebSearch, dedupe candidates,
-WebFetch where needed for fit detail, validate company legitimacy and drop
-any suspected-scam postings, rate the rest High/Medium/Low) — but restrict
-the result set to postings NOT in the "already seen" set from Step 1.
+`profile/preferences.yaml`, build LinkedIn-only queries, WebSearch, dedupe
+candidates, WebFetch where needed for fit detail, validate company
+legitimacy and drop any suspected-scam postings, rate the rest High/Medium/Low)
+— but restrict the result set to postings NOT in the "already seen" set from
+Step 1.
 Suspected-scam postings are excluded here just as `/scrape` excludes them —
 never draft for one even if it would otherwise look High/Medium fit.
 
@@ -45,16 +46,16 @@ never draft for one even if it would otherwise look High/Medium fit.
 
 Write/append `applications/scrape_<YYYY-MM-DD>.md` exactly as `/scrape`
 steps 7-8 describe (fit tables plus the "Excluded — suspected scam" table),
-containing only today's newly-found candidates (High, Medium, Low, and
-scam-excluded). This keeps tomorrow's "already seen" set accurate even for
-postings that don't get drafted.
+containing only today's newly-found LinkedIn candidates (High, Medium, Low,
+and scam-excluded). This keeps tomorrow's "already seen" set accurate even
+for postings that don't get drafted.
 
 ## Step 4 — Auto-draft for High and Medium fit
 
 For every new candidate rated High or Medium in Step 2, run the full
 `/apply` flow (`.claude/commands/apply.md` steps 1, 3-10) against its URL:
-fit evaluation, `resume.yaml` + `cover_letter.yaml` drafts, the
-`application-reviewer` subagent pass, revisions, and `.docx` generation.
+fit evaluation, `resume.yaml` + `cover_letter.yaml` drafts, and `.docx`
+generation.
 
 Judgment calls that would normally prompt the user — apply the safer
 default and note it in the report instead of stopping:

@@ -1,11 +1,11 @@
 ---
-description: Search job portals for postings that match profile/preferences.yaml and present fit-rated matches
+description: Search LinkedIn jobs for postings that match profile/preferences.yaml and present fit-rated matches
 ---
 
 # /scrape
 
-Goal: find live job postings that match `profile/preferences.yaml`, rate each
-one's fit, and hand back a short list the user can pick from to run
+Goal: find live LinkedIn job postings that match `profile/preferences.yaml`,
+rate each one's fit, and hand back a short list the user can pick from to run
 `/apply <url>` next. This command does not draft anything — it only finds and
 ranks candidates.
 
@@ -16,13 +16,12 @@ ranks candidates.
    `portals`.
 
 2. Build search queries by combining target roles with the accepted
-   locations, scoped to each portal's domain via `site:` search operators,
-   e.g.:
-   - `site:linkedin.com/jobs QA Engineer Vancouver`
-   - `site:ca.indeed.com Junior QA Analyst Remote Canada`
-   - `site:glassdoor.ca "QA Team Lead" Vancouver`
-   - `site:linkedin.com/jobs Manual QA Tester Vancouver`
-   - `site:ca.indeed.com QA Automation Engineer Remote Canada`
+  locations, scoped to LinkedIn Jobs via `site:` search operators, e.g.:
+  - `site:linkedin.com/jobs QA Engineer Vancouver`
+  - `site:linkedin.com/jobs Junior QA Analyst Remote Canada`
+  - `site:linkedin.com/jobs "QA Team Lead" Vancouver`
+  - `site:linkedin.com/jobs Manual QA Tester Vancouver`
+  - `site:linkedin.com/jobs QA Automation Engineer Remote Canada`
 
    `target_roles` in preferences.yaml spans the full seniority range (Junior
    through Lead) and both manual and automation QA — cast a wide net across
@@ -31,21 +30,20 @@ ranks candidates.
    level; a posting titled "Intermediate QA Analyst" or "QA Tester" is
    still in scope. Group queries efficiently (e.g. one query can omit a level
    qualifier and let results span levels) rather than running every
-   role-level x location x portal permutation — aim for broad coverage in
-   roughly 10-15 queries, not one query per exact title variant. Skip
-   `Company career pages` (no URL to search against) unless the user names
-   specific companies.
+  role-level x location permutation — aim for broad coverage in roughly
+  10-15 queries, not one query per exact title variant. Stick to LinkedIn
+  Jobs only; skip other portals and `Company career pages`.
 
 3. Use WebSearch for each query. Collect candidate postings: title, company,
-   location, portal, URL. Deduplicate by company + title (job boards often
-   cross-post the same role, and search engines may return the same listing
-   multiple times).
+   location, portal, URL. Deduplicate by company + title (search results may
+   return the same LinkedIn listing multiple times).
 
 4. For candidates where the search snippet doesn't give enough to judge fit
-   (seniority, remote policy, core responsibilities), WebFetch the posting URL
-   to pull more detail. Skip this for postings that are obviously out of scope
-   from the title/location alone (e.g. rejected locations) — don't waste fetches
-   on those.
+  (seniority, remote policy, core responsibilities), WebFetch the posting URL
+  to pull more detail. Skip this for postings that are obviously out of scope
+  from the title/location alone (e.g. rejected locations) — don't waste fetches
+  on those. Prefer recently posted openings; if a LinkedIn result is clearly
+  stale/expired, exclude it rather than rating it.
 
 5. Validate that the company is legit before rating fit. For each candidate
    remaining after step 4, check for scam/fraudulent-recruiter signals:
@@ -95,10 +93,12 @@ ranks candidates.
    fit tables.
 
 8. Write the same tables to
-   `applications/scrape_<YYYY-MM-DD>.md` (create `applications/` if needed)
-   so the list persists after the conversation ends. If a scrape file for
-   today already exists, append new candidates rather than overwriting, and
-   skip re-listing ones already recorded (match on URL).
+  `applications/scrape_<YYYY-MM-DD>.md` (create `applications/` if needed)
+  so the list persists after the conversation ends. If a scrape file for
+  today already exists, append new candidates rather than overwriting, and
+  skip re-listing ones already recorded (match on URL). Keep this list to
+  newly surfaced LinkedIn openings only; don't carry forward older results
+  unless they are genuinely new to today's search.
 
 9. Close with a one-line pointer: tell the user to run `/apply <url>` on
    whichever posting they want to pursue.
