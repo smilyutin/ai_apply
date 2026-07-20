@@ -12,7 +12,8 @@
       "Skill(schedule:*)",
       "Read(~/Library/LaunchAgents/**)",
       "Bash(scripts/daily_run.sh)",
-      "Bash(gh repo *)"
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)"
     ],
     "additionalDirectories": [
       "~/Library/LaunchAgents"

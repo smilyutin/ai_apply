@@ -62,16 +62,13 @@ profile/profile.yaml, preferences.yaml, cover_letter_voice.md
 
 ```
 /scrape
-   │  read preferences.yaml → search LinkedIn → dedupe candidates
+   │  read preferences.yaml → search portals → dedupe candidates
    │  validate each company is legit (drop suspected scams — see below)
    │  rate the rest High / Medium / Low
    ▼
 applications/scrape_<date>.md
    (fit tables + a separate "Excluded — suspected scam" table)
-   │  user chooses which companies to pursue
-   ▼
-/collect <url>
-   │  fetch posting only → applications/<slug>/job_posting.md
+   │  user picks a URL
    ▼
 /apply <url>
    │  read collected job_posting.md or fetch if needed
@@ -81,8 +78,6 @@ applications/scrape_<date>.md
    ▼
 applications/<slug>/   (ready to review and submit manually)
 ```
-
-<!-- reviewer pass commented out / parked for now -->
 
 **Scam screening** (`/scrape` step 5): before rating fit, each remaining
 candidate is checked for recruiter-scam red flags — no findable company
@@ -127,13 +122,17 @@ later fit-evaluation/doc-generation step for chosen companies.
 `/scrape` and `/apply` run interactively under normal permission prompts.
 The scheduled `/daily` run is unattended (no one is around at 8am to
 approve a prompt), so instead of skipping permissions entirely,
-.claude/settings.json pre-approves the tools needed for unattended `/daily` runs:
+`.claude/settings.json` pre-approves exactly what `/daily` needs and
+nothing else:
 
-- `WebSearch` and `WebFetch` (any domain — job postings and company sites vary daily)
-- `Write(applications/**)` and `Edit(applications/**)` for writing scrape/report outputs
-- `Bash` restricted to: the venv sanity check and the `generate_docx.py` resume/cover-letter render commands
-- `Bash(scripts/daily_run.sh)` (launchd entrypoint)
-- `Skill(schedule)` plus read-only access to `~/Library/LaunchAgents` (used to manage the launchd agent)
-- `Bash(gh repo *)` for git operations
+- `WebSearch` and `WebFetch` (any domain — job postings and company sites
+  vary daily, so this can't be a fixed domain list)
+- `Bash` restricted to three exact command patterns: the venv sanity
+  check plus two `generate_docx.py` invocations that only write
+  `applications/**/{resume,cover_letter}.docx` — no general shell access
 
-Anything not on that allow-list is denied automatically rather than hanging on a prompt nobody can answer. `scripts/daily_run.sh` deliberately does **not** pass `--dangerously-skip-permissions` — even if something in `/daily` misbehaved, it would still be constrained to the explicitly allowed tools/paths (no general shell access; writes limited to `applications/**`).
+Anything not on that list is denied automatically rather than hanging on a
+prompt nobody can answer. `scripts/daily_run.sh` deliberately does **not**
+pass `--dangerously-skip-permissions` — even if something in `/daily`
+misbehaved, it has no way to touch anything outside this repo or run an
+arbitrary command.
